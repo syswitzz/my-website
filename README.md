@@ -2,10 +2,10 @@
 
 A minimal personal portfolio website.
 
-## Run locally
+## Run locally (Flask)
 
 ```bash
-python3 server.py
+uv run --with flask python server.py
 ```
 
 Then open <http://127.0.0.1:4173>.
@@ -24,7 +24,7 @@ Example:
 SPOTIFY_CLIENT_ID=... \
 SPOTIFY_CLIENT_SECRET=... \
 SPOTIFY_REFRESH_TOKEN=... \
-python3 server.py
+uv run --with flask python server.py
 ```
 
 If Spotify credentials are missing, the page still works and shows a fallback message.

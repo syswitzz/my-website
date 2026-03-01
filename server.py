@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Tiny portfolio server with Spotify now-playing endpoint.
+"""Flask portfolio server with Spotify now-playing endpoint.
 
 Run:
   SPOTIFY_CLIENT_ID=... \
   SPOTIFY_CLIENT_SECRET=... \
   SPOTIFY_REFRESH_TOKEN=... \
-  python3 server.py
+  uv run --with flask python server.py
 """
 
 from __future__ import annotations
@@ -14,10 +14,10 @@ import base64
 import json
 import os
 import time
-from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
-from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
+
+from flask import Flask, jsonify, make_response, send_from_directory
 
 SPOTIFY_ACCOUNTS_URL = "https://accounts.spotify.com/api/token"
 SPOTIFY_CURRENT_TRACK_URL = "https://api.spotify.com/v1/me/player/currently-playing"
@@ -158,33 +158,26 @@ class SpotifyClient:
 
 
 spotify = SpotifyClient()
+app = Flask(__name__, static_folder=".", static_url_path="")
 
 
-class PortfolioHandler(SimpleHTTPRequestHandler):
-    def do_GET(self) -> None:  # noqa: N802
-        if self.path == "/api/spotify-now-playing":
-            payload = spotify.get_now_playing()
-            body = json.dumps(payload).encode("utf-8")
-            self.send_response(200)
-            self.send_header("Content-Type", "application/json; charset=utf-8")
-            self.send_header("Cache-Control", f"public, max-age={CACHE_SECONDS}")
-            self.send_header("Content-Length", str(len(body)))
-            self.end_headers()
-            self.wfile.write(body)
-            return
+@app.get("/")
+def root() -> object:
+    return send_from_directory(".", "index.html")
 
-        if self.path in {"/", "/index.html"} and not Path("index.html").exists():
-            self.send_error(404, "index.html not found")
-            return
 
-        super().do_GET()
+@app.get("/api/spotify-now-playing")
+def spotify_now_playing() -> object:
+    payload = spotify.get_now_playing()
+    response = make_response(jsonify(payload), 200)
+    response.headers["Cache-Control"] = f"public, max-age={CACHE_SECONDS}"
+    return response
 
 
 def main() -> None:
     port = int(os.getenv("PORT", "4173"))
-    with ThreadingHTTPServer(("0.0.0.0", port), PortfolioHandler) as server:
-        print(f"Serving portfolio on http://0.0.0.0:{port}")
-        server.serve_forever()
+    print(f"Serving portfolio on http://0.0.0.0:{port}")
+    app.run(host="0.0.0.0", port=port)
 
 
 if __name__ == "__main__":
