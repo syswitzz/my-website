@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Sudhanshu's minimal portfolio — Python backend, DevOps, cloud, and systems-focused projects."
+    />
+    <title>Sudhanshu | Portfolio</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <header class="top fade-up">
+        <h1>Sudhanshu</h1>
+        <p class="role">Self-taught programmer from India · Python backend · DevOps · cloud enthusiast.</p>
+        <nav>
+          <a class="chip" href="#about">about</a>
+          <a class="chip" href="#projects">projects</a>
+          <a class="chip" href="#hobbies">hobbies</a>
+        </nav>
+      </header>
+
+      <section id="about" class="fade-up delay-1">
+        <h2 class="heading">
+          <span class="heading-number">01</span>
+          <span class="heading-title">About me</span>
+        </h2>
+        <p>
+          I'm a self-taught programmer and aspiring software engineer from India. I code as a
+          hobby and love building practical projects.
+        </p>
+        <p class="muted" style="margin-top: 0.55rem">
+          Currently learning Python backend development, DevOps, cloud infrastructure, web
+          development, and strengthening problem solving through DSA in C++.
+        </p>
+      </section>
+
+      <section id="projects" class="projects fade-up delay-2">
+        <h2 class="heading">
+          <span class="heading-number">02</span>
+          <span class="heading-title">Selected projects</span>
+        </h2>
+        <ul>
+          <li>
+            <a href="https://github.com/syswitzz" target="_blank" rel="noreferrer">Open Source Work</a>
+            <span class="muted">— experiments in backend, tooling, and practical utilities</span>
+          </li>
+          <li>
+            <a href="https://github.com/syswitzz?tab=repositories" target="_blank" rel="noreferrer">GitHub Repositories</a>
+            <span class="muted">— complete collection of active and archived projects</span>
+          </li>
+          <li>
+            <a href="https://github.com/syswitzz/syswitzz" target="_blank" rel="noreferrer">Profile Readme</a>
+            <span class="muted">— tech stack, activity, and current focus</span>
+          </li>
+        </ul>
+      </section>
+
+      <section id="hobbies" class="fade-up delay-3">
+        <h2 class="heading">
+          <span class="heading-number">03</span>
+          <span class="heading-title">Hobbies & media</span>
+        </h2>
+        <div class="hobbies-grid">
+          <a class="page-item-each" href="https://letterboxd.com/" target="_blank" rel="noreferrer">
+            <span class="item-title">Letterboxd</span>
+            <span class="item-icon">◍</span>
+          </a>
+          <a class="page-item-each" href="https://www.last.fm/" target="_blank" rel="noreferrer">
+            <span class="item-title">Last.fm</span>
+            <span class="item-icon">◌</span>
+          </a>
+          <a class="page-item-each" href="https://anilist.co/" target="_blank" rel="noreferrer">
+            <span class="item-title">AniList</span>
+            <span class="item-icon">◎</span>
+          </a>
+        </div>
+      </section>
+
+      <div class="bottom-strip fade-up delay-3">
+        <div class="socials" aria-label="social links">
+          <a href="https://github.com/syswitzz" target="_blank" rel="noreferrer" aria-label="GitHub">⌘</a>
+          <a href="https://x.com/" target="_blank" rel="noreferrer" aria-label="Twitter/X">✦</a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" aria-label="LinkedIn">◈</a>
+          <a href="mailto:hello@example.com" aria-label="Email">✉</a>
+          <a href="https://t.me/syswitzz" target="_blank" rel="noreferrer" aria-label="Telegram">➤</a>
+        </div>
+
+        <div class="spotify" aria-live="polite">
+          <p id="spotify-track" class="spotify-track">Loading playback…</p>
+          <p id="spotify-status" class="spotify-status">Checking now playing / last played.</p>
+        </div>
+      </div>
+
+      <footer>© 2026 Sudhanshu</footer>
+    </main>
+
+    <script>
+      async function loadSpotifyPlayback() {
+        const trackEl = document.getElementById("spotify-track");
+        const statusEl = document.getElementById("spotify-status");
+
+        try {
+          const response = await fetch("/api/spotify-now-playing", { cache: "no-store" });
+          if (!response.ok) throw new Error("Spotify endpoint unavailable");
+
+          const data = await response.json();
+          if (data.track && data.artist) {
+            const safeText = `${data.track} — ${data.artist}`;
+            trackEl.textContent = safeText;
+            if (data.url) {
+              const a = document.createElement("a");
+              a.href = data.url;
+              a.target = "_blank";
+              a.rel = "noreferrer";
+              a.textContent = safeText;
+              trackEl.textContent = "";
+              trackEl.appendChild(a);
+            }
+
+            if (data.status === "playing") {
+              statusEl.textContent = "Listening now";
+            } else if (data.status === "recent") {
+              statusEl.textContent = "Last played";
+            } else {
+              statusEl.textContent = "Recently active";
+            }
+          } else {
+            trackEl.textContent = "No recent playback";
+            statusEl.textContent = data.message || "Nothing to show yet.";
+          }
+        } catch (_) {
+          trackEl.textContent = "Spotify unavailable";
+          statusEl.textContent = "Set Spotify env vars and run with python server.py.";
+        }
+      }
+
+      loadSpotifyPlayback();
+      setInterval(loadSpotifyPlayback, 30000);
+    </script>
+  </body>
+</html>
