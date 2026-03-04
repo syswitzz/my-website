@@ -408,6 +408,7 @@ footer {
 
   .chip{
     padding:0.4rem 0.8rem;
+    font-size:0.75rem;
   }
   .project-item{
     flex-direction:column;
@@ -418,9 +419,17 @@ footer {
   .project-item span{
     max-width:100%;
   }
+  h1{
+    font-size:clamp(1.8rem,7vw,2.6rem);
+    line-height:1.1;
+  }
+
+  .heading-title{
+    font-size:1.25rem;
+  }
 
   p{
-    font-size:0.98rem;
+    font-size:0.96rem;
     line-height:1.75;
   }
 
@@ -440,6 +449,9 @@ footer {
   .stack-icons img{
     width:50px;
     height:50px;
+  }
+  .hero-cat{
+    width:80px;
   }
 }
 
