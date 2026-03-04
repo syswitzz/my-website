@@ -187,38 +187,43 @@ li + li { margin-top: .45rem; }
 
 /* ---------- Projects ---------- */
 
-.projects a {
-  color: var(--text);
-  text-decoration: none;
+.projects a{
+  color:var(--text);
+  text-decoration:none;
 
-  border-bottom: 1px solid transparent;
+  border-bottom:1px solid transparent;
 
-  transition: color .2s ease, border-color .2s ease;
+  transition:color .2s ease, border-color .2s ease;
 }
 
 .project-item{
   display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  gap:1rem;
-  padding:0.35rem 0;
+  flex-direction:column;
+  gap:0.35rem;
+  padding:0.5rem 0;
 }
 
-.project-item span{
-  max-width:80%;
-}
-
-.project-item a{
-  white-space:nowrap;
+.project-item p{
+  line-height:1.65;
 }
 
 .projects li{
-  margin-top:0.7rem;
+  margin-top:0.9rem;
 }
 
-.projects a:hover {
-  color: var(--accent);
-  border-color: rgba(167,139,250,.5);
+.project-links{
+  display:flex;
+  gap:0.45rem;
+  align-items:center;
+}
+
+.project-links a{
+  white-space:nowrap;
+}
+
+.projects a:hover{
+  color:var(--accent);
+  border-color:rgba(167,139,250,.5);
 }
 
 /* ---------- Hobbies ---------- */
@@ -417,10 +422,6 @@ footer {
   p{
     font-size:0.98rem;
     line-height:1.75;
-  }
-
-  section{
-    padding:1.2rem 0;
   }
 
   .socials{
