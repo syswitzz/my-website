@@ -45,7 +45,7 @@ body {
 main {
   width: min(920px, 100%);
   margin: 0 auto;
-
+  padding-top:1.2rem;
   padding:
     clamp(1.2rem,3.4vw,3rem)
     clamp(1rem,3vw,2rem)
@@ -138,7 +138,7 @@ nav {
 /* ---------- Sections ---------- */
 
 section {
-  padding: 1.5rem 0;
+  padding: 1.8rem 0;
   border-bottom: 1px solid var(--line);
 }
 
@@ -397,6 +397,28 @@ footer {
     padding-top:1rem;
   }
 
+  nav{
+    gap:0.7rem;
+  }
+
+  .chip{
+    padding:0.4rem 0.8rem;
+  }
+  .project-item{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:0.35rem;
+  }
+
+  .project-item span{
+    max-width:100%;
+  }
+
+  p{
+    font-size:0.98rem;
+    line-height:1.75;
+  }
+
   section{
     padding:1.2rem 0;
   }
@@ -410,16 +432,14 @@ footer {
     height:34px;
   }
 
+  .stack-icons{
+    gap:14px;
+  }
+
   .stack-icons img{
-    width:48px;
-    height:48px;
+    width:50px;
+    height:50px;
   }
-
-  .project-item{
-    flex-direction:column;
-    gap:0.25rem;
-  }
-
 }
 
 /* ---------- About spacing ---------- */
