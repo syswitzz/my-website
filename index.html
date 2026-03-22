@@ -3,135 +3,166 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Sudhanshu | Interactive and Fun</title>
+    <title>Sudhanshu | About Me</title>
     <meta
       name="description"
-      content="A simple, thoughtful, and slightly fun personal page about Sudhanshu."
+      content="A simple, thoughtful, and interactive personal page about Sudhanshu."
     >
-    <meta name="theme-color" content="#f6efe8">
+    <meta name="theme-color" content="#f7efe7">
+
+    <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     >
+
+    <!-- Main stylesheet -->
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div class="page-shell">
-      <main class="site-main">
-        <section class="hero reveal is-visible">
-          <p class="eyebrow">About Me – Interactive and Fun</p>
-          <h1>Hey, I’m Sudhanshu 👋</h1>
-          <p class="subtitle">
-            A slightly introverted, overthinking human exploring life slowly 😄
+    <main class="page">
+      <!-- Section 1: Hero / About Me -->
+      <section class="hero reveal is-visible" id="top">
+        <p class="section-kicker">About Me – Interactive and Fun</p>
+        <h1>Hey, I’m Sudhanshu 👋</h1>
+        <p class="hero-subtitle">
+          A slightly introverted, overthinking human exploring life slowly 😄
+        </p>
+        <p class="hero-description">
+          I enjoy movies, random thoughts, and lately exploring philosophy through
+          audiobooks. I might seem quiet at first, but I get comfortable with time.
+        </p>
+
+        <div class="mini-tags" aria-label="Things Sudhanshu likes">
+          <span>Movies 🎬</span>
+          <span>Random thoughts 💭</span>
+          <span>Philosophy audiobooks 🎧</span>
+        </div>
+
+        <a class="scroll-link" href="#versions">Choose a version of me</a>
+      </section>
+
+      <!-- Section 2: Interactive buttons -->
+      <section class="content-card reveal" id="versions">
+        <div class="section-heading">
+          <p class="section-kicker">Section 2</p>
+          <h2>Choose your version of me</h2>
+          <p>
+            Same person, different operating systems depending on the day.
           </p>
-          <p class="hero-text">
-            I enjoy movies, random thoughts, and lately exploring philosophy through
-            audiobooks. I might seem quiet at first, but I get comfortable with time.
-          </p>
-          <a class="hero-link" href="#versions">Get to know me a little better</a>
-        </section>
+        </div>
 
-        <section id="versions" class="info-section reveal">
-          <div class="section-heading">
-            <p class="section-tag">Section 2</p>
-            <h2>Choose your version of me</h2>
-            <p>
-              Different moods, same person. Click a button and see which version has
-              taken over today.
-            </p>
-          </div>
-
-          <div class="mode-buttons" role="tablist" aria-label="Choose a version of Sudhanshu">
-            <button class="mode-button is-active" type="button" data-mode="serious" role="tab" aria-selected="true">
-              Serious Mode 🧠
-            </button>
-            <button class="mode-button" type="button" data-mode="lazy" role="tab" aria-selected="false">
-              Lazy Mode 😴
-            </button>
-            <button class="mode-button" type="button" data-mode="exam" role="tab" aria-selected="false">
-              Exam Mode 📚
-            </button>
-            <button class="mode-button" type="button" data-mode="real" role="tab" aria-selected="false">
-              Real Me 😄
-            </button>
-          </div>
-
-          <article class="mode-card" aria-live="polite">
-            <p class="mode-label">Currently selected</p>
-            <h3 id="mode-title">Serious Mode 🧠</h3>
-            <p id="mode-description">
-              Thinking about life, discipline, and trying to fix myself… but only
-              sometimes 😄
-            </p>
-          </article>
-        </section>
-
-        <section class="info-section reveal">
-          <div class="section-heading">
-            <p class="section-tag">Section 3</p>
-            <h2>FAQ about me</h2>
-            <p>
-              A few quick answers for anyone trying to decode the quiet guy in the room.
-            </p>
-          </div>
-
-          <div class="faq-list">
-            <article class="faq-item">
-              <button class="faq-question" type="button" aria-expanded="false">
-                <span>Are you always this quiet?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-answer">
-                <p>Initially yes 😅 but I get comfortable with time</p>
-              </div>
-            </article>
-
-            <article class="faq-item">
-              <button class="faq-question" type="button" aria-expanded="false">
-                <span>What do you do in your free time?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-answer">
-                <p>Movies, random thoughts, sometimes overthinking</p>
-              </div>
-            </article>
-
-            <article class="faq-item">
-              <button class="faq-question" type="button" aria-expanded="false">
-                <span>Biggest weakness?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-answer">
-                <p>Procrastination + overthinking combo</p>
-              </div>
-            </article>
-
-            <article class="faq-item">
-              <button class="faq-question" type="button" aria-expanded="false">
-                <span>What kind of person are you?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-answer">
-                <p>Calm, simple, and low-drama person</p>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section class="easter-egg reveal">
-          <p class="section-tag">Section 4</p>
-          <button class="secret-button" type="button" id="secret-button">
-            Don’t click this 👀
+        <div class="mode-buttons" role="tablist" aria-label="Different versions of Sudhanshu">
+          <button class="mode-button is-active" type="button" data-mode="serious" role="tab" aria-selected="true">
+            Serious Mode 🧠
           </button>
-          <p class="secret-message" id="secret-message" hidden>
-            You’re one of the few people I feel comfortable talking to 😄
-          </p>
-        </section>
-      </main>
-    </div>
+          <button class="mode-button" type="button" data-mode="lazy" role="tab" aria-selected="false">
+            Lazy Mode 😴
+          </button>
+          <button class="mode-button" type="button" data-mode="exam" role="tab" aria-selected="false">
+            Exam Mode 📚
+          </button>
+          <button class="mode-button" type="button" data-mode="real" role="tab" aria-selected="false">
+            Real Me 😄
+          </button>
+        </div>
 
+        <article class="mode-panel" id="mode-panel" aria-live="polite">
+          <p class="panel-label">Current mood</p>
+          <h3 id="mode-title">Serious Mode 🧠</h3>
+          <p id="mode-text">
+            Thinking about life, discipline, and trying to fix myself… but only
+            sometimes 😄
+          </p>
+        </article>
+      </section>
+
+      <!-- Section 3: FAQ -->
+      <section class="content-card reveal" id="faq">
+        <div class="section-heading">
+          <p class="section-kicker">Section 3</p>
+          <h2>FAQ about me</h2>
+          <p>Quick answers for people wondering what the quiet face means.</p>
+        </div>
+
+        <div class="faq-list">
+          <article class="faq-item">
+            <button
+              class="faq-question"
+              type="button"
+              aria-expanded="false"
+              aria-controls="faq-answer-1"
+            >
+              <span>Are you always this quiet?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-1">
+              <p>Initially yes 😅 but I get comfortable with time</p>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <button
+              class="faq-question"
+              type="button"
+              aria-expanded="false"
+              aria-controls="faq-answer-2"
+            >
+              <span>What do you do in your free time?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-2">
+              <p>Movies, random thoughts, sometimes overthinking</p>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <button
+              class="faq-question"
+              type="button"
+              aria-expanded="false"
+              aria-controls="faq-answer-3"
+            >
+              <span>Biggest weakness?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-3">
+              <p>Procrastination + overthinking combo</p>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <button
+              class="faq-question"
+              type="button"
+              aria-expanded="false"
+              aria-controls="faq-answer-4"
+            >
+              <span>What kind of person are you?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-4">
+              <p>Calm, simple, and low-drama person</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Section 4: Hidden easter egg -->
+      <section class="content-card easter-egg reveal" id="secret">
+        <p class="section-kicker">Section 4</p>
+        <button class="secret-button" type="button" id="secret-button">
+          Don’t click this 👀
+        </button>
+        <p class="secret-message" id="secret-message" hidden>
+          You’re one of the few people I feel comfortable talking to 😄
+        </p>
+      </section>
+    </main>
+
+    <!-- Main JavaScript -->
     <script src="script.js"></script>
   </body>
 </html>
